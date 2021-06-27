@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Access Denied</title>
+</head>
+
+<body>
+	<div th:insert="~{link :: links}"></div>
+	<!-- Add your site or application content here -->
+	<!--Header Area Start-->
+	<!-- NƠI GẮN HEADER -->
+	<div th:insert="~{header :: header_in}"></div>
+	<!-- Mobile Menu End -->
+	<!-- Include _menu.html -->
+
+	<h3 th:if="${message != null}" th:utext="${message}"
+		style="color: red; margin: auto; width: 50%;"></h3>
+
+
+	<!-- <div th:if="${userInfo != null}" th:utext="${userInfo}"></div> -->
+
+
+
+
+</body>
+
+</html>

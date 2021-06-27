@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body th:fragment="header_in">
+
+	<!--Header Area Start-->
+	<div class="header-area">
+		<div class="container">
+			<div class="row header-header">
+				<div class="col-md-2 col-sm-6 col-xs-6">
+					<div class="header-logo">
+						<a href="/"> <img th:src="@{/resource/user/img/logo.png}"
+							alt="" />
+						</a>
+					</div>
+				</div>
+				<div class="col-md-1 col-sm-6 visible-sm col-xs-6">
+					<div class="header-right">
+						<ul>
+							<li class="user-login"><a href="#"> <i
+									class="flaticon-people"></i>
+							</a>
+								<div class="sub-user">
+									<div class="user-item">
+										<div class="sign-in">
+											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">Đăng ký</a>
+										</div>
+									</div>
+									<div class="user-item">
+										<div class="sign-in">
+											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">Đăng nhập</a>
+										</div>
+									</div>
+								</div></li>
+							<li class="shoping-cart"><a href="cart"> <i
+									class="flaticon-shop"></i>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-7 col-sm-12 hidden-xs">
+					<div class="mainmenu text-center">
+						<nav>
+							<ul id="nav">
+								<li><a th:href="@{/shop}">SÁCH</a></li>
+								<li><a th:href="@{/shop}">KHUYẾN MÃI</a></li>
+								<li><a href="#">LIÊN HỆ</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="col-md-3 hidden-sm">
+					<div class="header-right">
+
+
+
+						<!-- Äá»I NGÃN NGá»®: Change langues -->
+						<div id="google_translate_element2" style="display: none">
+							<div class="skiptranslate goog-te-gadget" dir="ltr" style="">
+								<div id=":0.targetLanguage">
+									<select class="goog-te-combo"
+										aria-label="Tiá»n Ã­ch con dá»ch ngÃ´n ngá»¯"><option
+											value="">Chá»n NgÃ´n ngá»¯</option>
+									</select>
+								</div>
+								ÄÆ°á»£c há» trá»£ bá»i <span style="white-space: nowrap"><a
+									class="goog-logo-link" href="https://translate.google.com"
+									target="_blank"><img
+										src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_42x16dp.png"
+										width="37px" height="14px" style="padding-right: 3px"
+										alt="Google Dá»ch">Dá»ch</a></span>
+							</div>
+						</div>
+
+						<li class="menu-item" style="display: flex; position: absolute;">
+							<a href="#" title="VI" class="lang-vi first"
+							onclick="doGTranslate('vi|vi');return false;" hreflang="vi"
+							lang="vi" role="menuitem"> <!-- VI --> <img
+								th:src="@{/resource/user/img/vn.png}" alt="" class="img-fluid">
+								<br />
+
+						</a> <a href="#" style="margin-left: 10px; margin-top: 4px;"
+							title="EN" class="lang-en last"
+							onclick="doGTranslate('vi|en');return false;" hreflang="en"
+							lang="en" role="menuitem"> <!-- EN --> <img
+								th:src="@{/resource/user/img/usa.png}" alt="" class="img-fluid">
+						</a>
+						</li>
+						<!-- End Äá»i ngÃ´n ngá»¯: End change langues -->
+						<ul>
+
+							<li class="user-login"><a> <i class="flaticon-people"></i>
+
+							</a> <!-- ============================================ -->
+
+								<div class="sub-user">
+
+									<!-- When login: If user == null will show Dang ky + Dang Nhap -->
+									<div th:if="${#request.userPrincipal==null}">
+
+										<div class="user-item">
+											<div class="sign-in">
+												<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">ÄÄng
+													kÃ½</a>
+											</div>
+										</div>
+										<div class="user-item">
+											<div class="sign-in">
+												<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">ÄÄng
+													nháº­p</a>
+											</div>
+										</div>
+									</div>
+									<!--  -->
+									<!-- When login: If user != null will show UserName + Information user + Logout -->
+									<div th:if="${#request.userPrincipal !=null}">
+
+										<div class="user-item">
+											<div class="sign-in">
+												<span style="color: #000"
+													th:utext="${#request.userPrincipal.name}"></span>
+											</div>
+										</div>
+
+
+
+										<div class="user-item">
+											<div class="sign-in">
+
+												<i class="fas fa-user-plus"></i> <a
+													th:href="@{/my-account/}+${#request.userPrincipal.name}">Thông
+													tin tài khoản</a>
+											</div>
+										</div>
+
+
+
+										<div class="user-item">
+
+											<div class="sign-in"
+												th:if="${#request.userPrincipal != null}">
+												<i class="fas fa-user-plus"></i> <a th:href="@{/logout}">Logout
+												</a>
+											</div>
+										</div>
+									</div>
+								</div> <!-- ================================================================== -->
+							</li>
+
+							<li class="shoping-cart"><a th:href="@{shopping_cart}">
+									<span style="color: white-space;"></span> <i
+									class="flaticon-shop" th:text="${session.myCartNum}"></i>
+
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Header Area End-->
+
+	<!-- Mobile Menu Start -->
+	<div class="mobile-menu-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="mobile-menu">
+						<nav id="dropdown">
+							<ul>
+								<li><a th:href="@{/shop/}">SÃCH</a></li>
+								<li><a th:href="@{/shop/} ">KHUYáº¾N MÃÂI</a></li>
+								<li><a href="#footer">LIÃN Há»</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Mobile Menu End -->
+
+	<!-- Xá»­ lÃ½ ngÃ´n ngá»¯: Change Langue JQuery -->
+	<script>
+		function googleTranslateElementInit2() {
+			new google.translate.TranslateElement({
+				pageLanguage : 'vi',
+				autoDisplay : false
+			}, 'google_translate_element2');
+			var removePopup = document.getElementById('goog-gt-tt');
+			removePopup.parentNode.removeChild(removePopup);
+		}
+	</script>
+	<script type="text/javascript"
+		src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+	<script type="text/javascript">
+		function GTranslateFireEvent(element, event) {
+			try {
+				if (document.createEventObject) {
+					var evt = document.createEventObject();
+					element.fireEvent('on' + event, evt)
+				} else {
+					var evt = document.createEvent('HTMLEvents');
+					evt.initEvent(event, true, true);
+					element.dispatchEvent(evt)
+				}
+			} catch (e) {
+			}
+		}
+
+		function doGTranslate(lang_pair) {
+			if (lang_pair.value)
+				lang_pair = lang_pair.value;
+			if (lang_pair == '')
+				return;
+			var lang = lang_pair.split('|')[1];
+			var teCombo;
+			var sel = document.getElementsByTagName('select');
+			for (var i = 0; sel.length > i; i++) {
+				if (sel[i].className == 'goog-te-combo')
+					teCombo = sel[i];
+			}
+			if (document.getElementById('google_translate_element2') == null
+					|| document.getElementById('google_translate_element2').innerHTML.length == 0
+					|| teCombo.length == 0 || teCombo.innerHTML.length == 0) {
+				setTimeout(function() {
+					doGTranslate(lang_pair)
+				}, 500)
+			} else {
+				teCombo.value = lang;
+				GTranslateFireEvent(teCombo, 'change');
+				GTranslateFireEvent(teCombo, 'change')
+			}
+		}
+	</script>
+
+</body>
+</html>

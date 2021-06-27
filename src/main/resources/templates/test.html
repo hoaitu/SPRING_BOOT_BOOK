@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Variable</title>
+</head>
+<body>
+	<!-- NÆ I Gáº®N LINK VÃO -->
+	<div th:insert="~{link :: links}"></div>
+	<!-- Add your site or application content here -->
+	<!--Header Area Start-->
+	<!-- NÆ I Gáº®N HEADER -->
+	<div th:insert="~{header :: header_in}"></div>
+	<!-- Mobile Menu End -->
+	<h1>th:with (Array)</h1>
+	<!-- Create an Array: -->
+	<th:block th:with="flowers = ${ {'Rose', 'Lily', 'Tulip'} }">
+		<table border="1">
+			<tr>
+				<th>No</th>
+				<th>Flower</th>
+			</tr>
+			<tr th:each="flower, state : ${flowers}">
+				<td th:utext="${state.count}">No</td>
+				<td th:utext="${flower}">Flower</td>
+			</tr>
+		</table>
+	</th:block>
+
+
+
+
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/1" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/mongdoidoi-tk.jpeg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Mộng Đổi Đời </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/2" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/nhungloaihoacogai-tk.jpg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Những Loài Hoa Có Gai </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/3" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/pho-td.jpg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Phố </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/4" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/thienhanhgia-td.png" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Thiên Hành Giả </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/5" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/dungnoichungtakhongloiquyen-tn.jpeg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Đừng Nói Chúng Ta Không Lợi Quyền </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/6" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/nguoidanonghoathanhdanba-tn.jpeg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Người Đàn Ông Hóa Thành Đàn Bà </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/7" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/worldteacher-ttn.jpeg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">World Teacher - Tập 1 </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/8" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/tt10.jpeg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Đừng Để Mẹ Khóc </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/9" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/tt11.jpg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Âm Mưu Thay Não </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/10" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/tt12.jpg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Bán Linh Hồn Cho Ác Qủy </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/11" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/tt13.jpg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Hy Sinh </a>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6">
+		<a href="/single-product/12" class="single-banner-image-wrapper"><img
+			src="/resource/user/img/shop/tt14.jpg" /></a>
+		<div class="banner-bottom-title" style="height: 40px">
+			<a href="">Tiểu Thuyết Trinh Thám 1/14 Tập 2 - Khách Trọ Và Xác
+				Sống </a>
+		</div>
+	</div>
+
+	<!--  -->
+
+
+	<div class="shop-single-product-area">
+		<div class="col-md-4 col-sm-6">
+			<div class="single-banner">
+				<div class="product-wrapper">
+					<a href="/single-product/2" class="single-banner-image-wrapper">
+						<img alt="" src="/resource/user/img/shop/nhungloaihoacogai-tk.jpg">
+					</a>
+					<div class="product-description">
+						<div class="functional-buttons">
+							<a title="ThÃªm vÃ&nbsp;o giá» hÃ&nbsp;ng" href="#"> <i
+								class="fa fa-shopping-cart"></i>
+							</a> <a href="#" title="ThÃªm vÃ&nbsp;o danh sÃ¡ch yÃªu thÃ&shy;ch">
+								<i class="far fa-heart"></i>
+							</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+								data-target="#productModal1"> <i class="fas fa-compress-alt"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div
+					style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+					<img src="/resource/user/img/sale.png" alt="">
+					<p
+						style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+						30%</p>
+				</div>
+				<div class="banner-bottom text-center">
+					<div class="banner-bottom-title" style="height: 40px;">
+						<a href="#"> <span>Những Loài Hoa Có Gai</span>
+						</a>
+					</div>
+					<div style="color: #32b5f3;" class="price-2">
+						<span>75</span> <span style="color: black;" class="old-price">500.000Ä</span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- vvvvvvvvvvvvvvvvvvvvvvvv -->
+
+
+	<div class="col-md-4 col-sm-6">
+		<div class="col-md-4 col-sm-6">
+			<div class="single-banner">
+				<div class="shop-single-product-area">
+					<a href="/single-product/49" class="single-banner-image-wrapper">
+						<img src="/resource/user/img/shop/tn1.jpeg" />
+					</a>
+					<div class="banner-bottom-title" style="height: 40px">
+						<a href="">Mình Nói Chuyện Gì Khi Mình Nói Chuyện Tình </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- NÆ I Gáº®N FOOTER -->
+	<div th:insert="~{footer :: footer_in}"></div>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+	<!-- NÆ I Gáº®N LINK VÃO -->
+	<div th:insert="~{link :: links}"></div>
+	<!-- Add your site or application content here -->
+	<!--Header Area Start-->
+	<!-- NÆ I Gáº®N HEADER -->
+	<div th:insert="~{header :: header_in}"></div>
+	<!-- Mobile Menu End -->
+
+	<!--Header Area End-->
+	<!-- Breadcrumbs Area Start -->
+	<div class="breadcrumbs-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="breadcrumbs">
+						<h2>SÃ¡ch</h2>
+						<ul class="breadcrumbs-list">
+							<li><a title="Return to Home" href="/">Trang chá»§</a></li>
+							<li>SÃ¡ch</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumbs Area Start -->
+
+
+	<!-- Shop Area Start -->
+	<div class="shopping-area section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<div class="shop-widget">
+						<div class="shop-widget-top">
+							<aside class="widget widget-categories">
+								<h2 class="sidebar-title text-center">Danh má»¥c</h2>
+								<div th:each="category : ${listcategory}">
+									<ul class="sidebar-menu">
+
+										<li><a th:href="@{/shop/} + ${category.maTheLoai}"> <i
+												class="fa fa-angle-double-right"></i> <span
+												th:text="${category.tenTheLoai}"></span></a></li>
+
+										<!-- <% } %> -->
+									</ul>
+								</div>
+							</aside>
+							<aside class="widget shop-filter">
+								<h2 class="sidebar-title text-center">GiÃ¡</h2>
+								<div class="info-widget">
+									<div class="price-filter">
+										<div id="slider-range"></div>
+										<div class="price-slider-amount">
+											<input type="text" id="amount" name="price"
+												placeholder="Add Your Price" />
+											<div class="widget-buttom">
+												<input type="submit" value="TÃ¬m Kiáº¿m" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</aside>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+				<div id="items" class="col-md-9 col-sm-9 col-xs-12">
+					<div class="shop-tab-area">
+						<div class="shop-tab-list">
+							<div class="shop-tab-pill pull-left">
+								<ul>
+									<li class="active" id="left"><a data-toggle="pill"
+										href="#home"><i class="fa fa-th"></i></a></li>
+									<li><a data-toggle="pill" href="#menu1"><i
+											class="fa fa-th-list"></i></a></li>
+								</ul>
+							</div>
+
+
+
+
+
+
+							<!-- Tìm kiếm  -->
+							<div class="search-book">
+								<form name="" class="form-inline">
+									<input class="form-control mr-sm-2" type="text" name="tenSach"
+										placeholder="Search" aria-label="Search" id="autoSearch" />
+									<div id="search"
+										style="visibility: visible; opacity: 1; transform: scaleY(1);"></div>
+									<button class="btn btn-outline-success my-2 my-sm-0"
+										type="button" onclick="search();">
+										<i class="fas fa-search"></i>
+									</button>
+								</form>
+							</div>
+
+
+							<!-- Final tìm kiếm   -->
+
+
+
+
+
+						</div>
+						<div class="tab-content">
+							<div class="row tab-pane fade in active" id="home">
+								<div id="resuilts">
+									<div th:each="book : ${listbook}">
+										<!-- <%ArrayList<Sach> listSach = (ArrayList<Sach>) request.getAttribute("listSach");%>
+                                <%
+                                    for (int i = 0; i < listSach.size(); i++) {
+                                %> -->
+										<div class="shop-single-product-area">
+											<div class="col-md-4 col-sm-6">
+												<div class="single-banner">
+													<div class="product-wrapper">
+														<a th:href="@{/single-product/} + ${book.maSach}"
+															class="single-banner-image-wrapper"> <img alt=""
+															th:src="@{${book.hinhAnh}}" />
+														</a>
+														<div class="product-description">
+															<div class="functional-buttons">
+																<a title="ThÃªm vÃ o giá» hÃ ng" href="#"> <i
+																	class="fa fa-shopping-cart"></i>
+																</a> <a href="#" title="ThÃªm vÃ o danh sÃ¡ch yÃªu thÃ­ch">
+																	<i class="far fa-heart"></i>
+																</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+																	data-target="#productModal1"> <i
+																	class="fas fa-compress-alt"></i>
+																</a>
+															</div>
+														</div>
+													</div>
+													<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+													<div
+														style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+														<img th:src="@{/resource/user/img/sale.png}" alt="" />
+														<p
+															style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+															30%</p>
+													</div>
+													<div class="banner-bottom text-center">
+														<div class="banner-bottom-title" style="height: 40px;">
+															<a href="#"> <span th:text="${book.tenSach}">
+															</span>
+															</a>
+														</div>
+														<div style="color: #32b5f3;" class="price-2">
+															<span th:text="${book.gia}"><span>.000 VNÄ</span>
+															</span> <span style="color: black;" class="old-price">500.000Ä</span>
+														</div>
+													</div>
+													<!-- <% } else {%>
+                                            <div class="banner-bottom text-center">
+                                                <div class="banner-bottom-title" style="height: 40px">
+                                                    <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                                    </a>
+                                                </div>
+                                                <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>Ä</span>
+                                                </div>
+                                            </div>
+                                            <% }%> -->
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- ////////////////////////////////////////////////////////////////////// -->
+
+
+							<div id="menu1" class="tab-pane fade">
+
+								<div id="single-product" class="row">
+									<div th:each="book : ${listbook}">
+										<div class="single-shop-product">
+											<div class="col-xs-12 col-sm-5 col-md-4">
+												<div class="left-item">
+													<a th:href="@{/single-product/} + ${book.maSach}"
+														title="Book Name"> <img th:src="@{${book.hinhAnh}}"
+														alt="" />
+													</a>
+												</div>
+												<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+												<div
+													style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+													<img th:src="@{/resource/user/img/sale.png}" alt="" />
+													<p
+														style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+														30%</p>
+												</div>
+												<!-- <%}%> -->
+											</div>
+											<div class="col-xs-12 col-sm-7 col-md-8">
+												<div class="deal-product-content">
+													<h4>
+														<a href="single-product.html" title="Book Name"><span
+															th:text="${book.tenSach}"></span></a>
+													</h4>
+													<div class="product-price">
+														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+														<span class="new-price" th:text="${book.gia}"><span>.000
+																VNÄ</span></span> <span class="old-price">500.000Ä</span>
+														<!-- <%} else {%>
+                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000Ä</span>
+                                                <%}%> -->
+													</div>
+													<p>Hay cá»±c ká»³</p>
+													<div class="availability">
+														<span><a href="#">Mua Ngay</a></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- ///////////////////////////////////////// -->
+
+
+							<div>&nbsp</div>
+
+							<!-- Phân trang -->
+
+							<!-- <nav aria-label="Page navigation example">
+								<div id="pagination">
+									<th:block th:forEach var="loop" begin="1" end="${totalPage}">
+									<th:block th:forEach="loop, 1 : ${totalPage}">
+										<div th:switch>
+											<th:case test="${loop == 1}">
+											<th:case th:test="${loop == 1}">
+												<button class="paging-item active" type="button"
+													name="currentPage">
+
+													${loop}
+
+													<span th:text="${loop}"><span>
+												</button>
+												</th:when>
+												<th:otherwise>
+													<button class="paging-item" type="button" id="phantrangid"
+														name="currentPage">
+
+														${loop}
+														<span th:text="${loop}"><span>
+													</button>
+												</th:otherwise>
+									</th:block>
+
+
+									</c:forEach>
+								</div>
+						</div>
+						</nav> -->
+
+
+
+							<!-- 	<nav aria-label="Page navigation example">
+								<div id="pagination">
+									<div th:each="book : ${listbook}">
+								
+									<th:block c:forEach var="loop" begin="1" end="${totalPage}">
+									<th:block th:each="loop, 1 : ${totalPage}">
+										<div th:switch>
+												<div th:case th:test="${loop == 1}">
+											<div th:case>
+												<button class="paging-item active" type="button"
+													name="currentPage">
+													<span th:text="${loop}"></span>
+												</button>
+											</div>
+											<div th:case>
+												<button class="paging-item" type="button" id="phantrangid"
+													name="currentPage">
+													<span th:text="${loop}"></span>
+												</button>
+											</div>
+
+										</div>
+
+
+										</div>
+									</th:block>
+								</div>
+							</nav> -->
+
+
+							<!-- <nav aria-label="Page navigation example">
+								<div id="pagination">
+									<th:block th:each="loop , iterStat : ${totalPage}">
+
+											<th:block
+										th:each="i: ${#{numbers.sequence(1, ${totalPage}, 12)}}">
+
+										<div c:choose>
+										<c:when test="${loop == 1}">
+										iterStat.index = 0
+
+
+										<span th:text="${loop}" />
+										This will print the index value
+										<span th:text="${iterStat.index+1}" />
+										This will print the Index
+
+
+										<button class="paging-item active" type="button"
+											name="currentPage">
+											<span th:text="${loop}">aa</span>
+
+											<span th:if="${loop == iterStat.index+1 }"> <span
+												th:text="${loop}">cc</span> aa0994884
+											</span>
+										</button>
+										</c:when>
+										<c:otherwise>
+										<button class="paging-item" type="button" id="phantrangid"
+											name="currentPage">
+											<span th:unless="${loop == iterStat.index+1}"> <span
+												th:text="${loop}">cc</span> cc
+											</span>
+										</button>
+											</c:otherwise>
+
+										</c:choose>
+									</th:block>
+								</div>
+							</nav> -->
+
+
+
+
+
+
+							<!--  -->
+
+
+
+
+
+							<!-- Phân trang -->
+
+							<!-- <nav aria-label="Page navigation example">
+								<div id="pagination">
+									<th:block th:each="loop , 1: ${totalPage}">
+										<c:choose>
+											<c:when test="${loop == 1}">
+												<button class="paging-item active" type="button"
+													name="currentPage">
+													<span th:text="${loop}">az</span>
+												</button>
+											</c:when>
+											<c:otherwise>
+												<button class="paging-item" type="button" id="phantrangid"
+													name="currentPage">
+													<span th:text="${loop}">cc</span>
+												</button>
+											</c:otherwise>
+
+										</c:choose>
+									</th:block>
+								</div>
+							</nav> -->
+
+
+							<!-- ////////////////////////////// -->
+
+
+							<!-- <nav aria-label="Page navigation example">
+								<div id="pagination">
+
+									<div class="col-sm-1">
+										<span th:each="i: ${#numbers.sequence(1, totalPage )}">
+											<a th:if="${i != 1}" th:href="@{'/topic/page/' + ${i}}">[[${i}]]</a>
+
+
+											<span th:unless="${i != 1}">[[${i}]] </span> &nbsp; &nbsp;
+										</span>
+									</div>
+
+								</div>
+							</nav> -->
+
+							<!-- //////////////// test -->
+
+							<nav aria-label="Page navigation example">
+								<div id="pagination">
+									<th:block th:each="i: ${#numbers.sequence(1, totalPage )}">
+										<button th:if="${i != 1}" class="paging-item active"
+											type="button" name="currentPage">[[${i}]]</button>
+
+										<button th:unless="${i != 1}" class="paging-item"
+											type="button" id="phantrangid" name="currentPage">[[${i}]]</button>
+
+									</th:block>
+								</div>
+							</nav>
+
+
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- /**
+			03/06/2021
+		*/ -->
+		</div>
+	</div>
+	<!-- Shop Area End -->
+
+	<!-- Footer Area Start -->
+
+	<!-- Footer Area Start -->
+
+
+
+
+
+	<script type="text/javascript">
+		function search() {
+			$
+					.ajax({
+						type : "GET",
+						url : "search",
+						data : 'tenSach=' + $("#autoSearch").val(),
+						success : function(res) {
+							var result = "";
+							/* <img th:src="@{${book.hinhAnh}}" */
+								/* alt="" /> */
+							result += "<ul>";
+							$
+									.each(
+											res,
+											function(k, v) {
+												result += '<a href="/single-product/'
+													+ v.maSach
+													+ '">'
+														+ '<img src="'+v.hinhAnh+'" alt="" />'
+
+														+ '<li class="list-group-item link-class">'
+														+ v.tenSach
+														+ '</a></li><br/>';
+												/* for (var i = 0; i < v.length; i++) {
+													result += v[i] + "/n";
+												}
+												console.log(result);
+												 */});
+
+							result += "</ul>";
+
+							/* $('#result').html(result); */
+							$('#search').html(result);
+						},
+						error : function(res) {
+							alert("Error while request!");
+						}
+
+					});
+		}
+	</script>
+
+	<!-- Phân trang Ajx -->
+
+
+
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$(".paging-item")
+									.click(
+											function() {
+												/* 	var value = $(this).val(); */
+												var sotrang = $(this).text();
+												var spbatdau = (sotrang - 1) * 12;
+												var result = "";
+												console.log(sotrang);
+
+												$
+														.ajax({
+															type : "GET",
+															url : "shops",
+															data : {
+																'currentPage' : sotrang
+															},
+															dataType : "json",
+
+															success : function(
+																	msg) {
+																for (var i = 0; i < msg.length; i++) {
+																	result += '<div class="col-md-4 col-sm-6" >'
+																	result += '<a href="/single_product/'
+																			+ msg[i].maSach
+																			+ '"class="single-banner-image-wrapper"><img alt="" src = "'+msg[i].hinhAnh+'"/></a>'
+																	result += '<div class="banner-bottom text-center"'
+																			+ '<div class="banner-bottom-title" style="height: 40px">'
+																			+ '<a href="">'
+																			+ msg[i].tenSach
+																			+ ' </a>'
+																			+ '</div>'
+																			+ '</div>'
+																			+ '</div>'
+
+																}
+																console
+																		.log("Mess laf: "
+																				+ result);
+																/*	$("#search").html(result);*/
+																/* Tên trùng vs id chỗ để hiển thị ra dao diện: resuilts  */
+																$("#resuilts")
+																		.html(
+																				result);
+															}
+														});
+											});
+						});
+	</script>
+
+
+
+
+
+
+
+
+	<!-- NÆ I Gáº®N FOOTER -->
+	<div th:insert="~{footer :: footer_in}"></div>
+</body>
+</html>

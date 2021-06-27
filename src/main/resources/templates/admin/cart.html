@@ -1,0 +1,91 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>WRITER Admin</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- favicon
+		============================================ -->
+
+</head>
+<style>
+h3 {
+	color: white;
+}
+</style>
+<body>
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{admin/linkAdm :: links_admin}"></div>
+	<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+
+	<div th:insert="~{admin/header :: header_admin}"></div>
+
+
+	<div class="all-content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="product-status-wrap">
+						<h4>Quản lý đơn hàng</h4>
+
+						<table>
+							<tr>
+								<th>ID đơn hàng</th>
+								<th>Tên khách hàng</th>
+								<th>Số điện thoại</th>
+								<th>Trạng thái</th>
+								<th>Ngày đặt hàng</th>
+								<th>Tổng tiền</th>
+								<th>Thao tác</th>
+							</tr>
+							<!-- <c:forEach items="${listOrders }" var="order"> -->
+							<div th:each="order : ${listOrders}">
+							<tr>
+								<td><span th:text="${order.receipt.receiptId}"></span></td>
+								<td><span th:text="${order.receipt.receiptName }"></span></td>
+								<td><span th:text="${order.receipt.receiptPhone }"></span></td>
+								<td><span th:text="${order.receipt.receiptStatus }"></span>
+									<!-- <c:if test="${order.receipt.receiptStatus == true}">
+									Tiếp nhận đơn
+									</c:if> <c:if test="${order.receipt.receiptStatus == false}">
+									Đã giao
+									</c:if> --></td>
+								<td><span th:text="${order.receipt.receiptDate }"></span></td>
+								<td><span th:text="${order.receipt.total }+'00 VNĐ'"></span></td>
+								<td><a
+									th:href="@{/admin/orderDetail/}+${order.receipt.receiptId }">
+										<button data-toggle="tooltip" title="Detail"
+											class="pd-setting-ed">Detail</button>
+								</a> <a th:href="@{/admin/editOrder/}+${order.receipt.receiptId }"><button
+											data-toggle="tooltip" title="Edit" class="pd-setting-ed">
+											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+										</button> </a> <a onclick="return confirm('Bạn có chắc muốn xóa')"
+									th:href="@{/admin/deleteOrder/}+${order.receipt.receiptId }">
+										<button data-toggle="tooltip" title="Trash"
+											class="pd-setting-ed">
+											<i class="fa fa-trash-o" aria-hidden="true"> </i>
+										</button>
+								</a></td>
+							</tr>
+							</div>
+							<!-- </c:forEach> -->
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--FOOTER -->
+
+	<div th:insert="~{admin/footer :: footer_admin}"></div>
+
+</body>
+</html>

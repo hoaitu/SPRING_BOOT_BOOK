@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body th:fragment="header_admin">
+
+
+	<div class="left-sidebar-pro">
+		<nav id="sidebar" class="">
+			<div class="sidebar-header">
+				<a href="index.html"><img class="main-logo"
+					th:src="@{/resource/user/img/logo-2.png}" alt="" /></a> <strong><img
+					th:src="@{/resource/admin/img/logo/logosn.png}" alt="" /></strong>
+			</div>
+
+			<div class="left-custom-menu-adp-wrap comment-scrollbar">
+				<nav class="sidebar-nav left-sidebar-menu-pro">
+					<ul class="metismenu" id="menu1">
+						<li class="active"><a class="has-arrow" href="index.html">
+								<i class="icon nalika-home icon-wrap"></i> <span
+								class="mini-click-non">Quản lý danh mục</span>
+						</a>
+							<ul class="submenu-angle" aria-expanded="true">
+
+								<li><a title="Product List" href=""><span
+										class="mini-sub-pro">Danh sách sản phẩm</span></a></li>
+								<li><a title="Product Edit" href="list-customer.html"><span
+										class="mini-sub-pro">Danh sách khách hàng</span></a></li>
+								<li><a title="Product Detail" href=""><span
+										class="mini-sub-pro">Danh sách danh mục</span></a></li>
+
+							</ul></li>
+					</ul>
+				</nav>
+			</div>
+		</nav>
+	</div>
+
+</body>
+</html>

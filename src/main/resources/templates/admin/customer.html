@@ -1,0 +1,94 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>WRITER Admin</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- favicon
+		============================================ -->
+
+</head>
+<style>
+h3 {
+	color: white;
+}
+</style>
+<body>
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{admin/linkAdm :: links_admin}"></div>
+	<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+
+	<div th:insert="~{admin/header :: header_admin}"></div>
+
+	<div class="all-content-wrapper">
+
+		<div class="product-status mg-b-30">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="product-status-wrap">
+							<h4>Customer</h4>
+							<div class="add-product">
+								<a th:href="@{/admin/addUser}">Thêm khách hàng</a>
+							</div>
+							<table>
+								<tr>
+									<th>#</th>
+									<th>UserName</th>
+									<th>Email</th>
+									<th>Phone</th>
+									<th>Address</th>
+									<th>Gender</th>
+									<th>Level</th>
+									<th>Thao tác</th>
+								</tr>
+								<div th:each="users : ${listAllUser}">
+									<tr>
+										<td><p th:text="${users.idUser }"></p></td>
+										<td><p th:text="${users.username }"></p></td>
+										<td><p th:text="${users.email }"></p></td>
+										<td><p th:text="${users.phone }"></p></td>
+										<td><p th:text="${users.address }"></p></td>
+										<td><p th:text="${users.gender }"></p></td>
+										<td>
+											<div th:switch="${users.level }">
+												<p th:case="1">User</p>
+												<p th:case="2">Admin</p>
+											</div>
+										</td>
+										<td><a th:href="@{/admin/editCustomter/}+${users.idUser}">
+												<button data-toggle="tooltip" title="Edit"
+													class="pd-setting-ed">
+													<i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
+												</button>
+										</a> <a onclick="return confirm('Bạn có chắc muốn xóa')"
+											th:href="@{/admin/deleteUser/}+${users.idUser}">
+												<button data-toggle="tooltip" title="Trash"
+													class="pd-setting-ed">
+													<i class="fa fa-trash-o" aria-hidden="true"> </i>
+												</button>
+										</a></td>
+									</tr>
+								</div>
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--FOOTER -->
+
+	<div th:insert="~{admin/footer :: footer_admin}"></div>
+
+</body>
+</html>

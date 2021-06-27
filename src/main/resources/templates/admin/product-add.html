@@ -1,0 +1,135 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Product Edit | Nalika - Material Admin Template</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+	th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+
+
+</head>
+
+<body>
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{admin/linkAdm :: links_admin}"></div>
+
+
+
+	<!-- <div th:insert="~{admin/header :: header_admin}"></div> -->
+
+
+	<!-- Start Welcome area -->
+	<div class="all-content-wrapper">
+
+		<!-- Single pro tab start-->
+		<div class="single-product-tab-area mg-b-30">
+			<!-- Single pro tab review Start-->
+			<div class="single-pro-review-area">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="review-tab-pro-inner">
+								<ul id="myTab3" class="tab-review-design">
+									<li class="active"><a href="#description"><i
+											class="icon nalika-edit" aria-hidden="true"></i> Thêm sản
+											phẩm</a></li>
+								</ul>
+								<div style="float: right;">
+									<h4>
+										<a th:href="@{/admin}">Quay lại</a>
+									</h4>
+								</div>
+
+								<div id="myTabContent" class="tab-content custom-product-edit">
+									<div class="product-tab-list tab-pane fade active in"
+										id="description">
+										<div class="row">
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<!-- <form:form action="addProduct" method="POST"
+													modelAttribute="books" enctype="multipart/form-data"> -->
+												<form method="POST" th:object="${books}"
+													enctype="multipart/form-data">
+													<br /> Hình ảnh:
+													<!-- <input th:field="*{hinhAnh}"
+														class="form-control" /> -->
+													<input type="file" name="hinhAnh" id="hinhAnh"
+														class="form-control-file"
+														accept="image/png, image/jpeg, image/jpg"
+														onchange="uploadFile()" />
+													<p>
+														<img alt="Logo Preview" id="thumbnail" height="150" />
+													</p>
+													<!-- <form:errors path="hinhAnh" cssClass="error" /> -->
+
+													<br /> Tên sách: <input th:field="*{tenSach}"
+														class="form-control" required />
+													<!-- <form:errors path="tenSach" cssClass="error" /> -->
+													<br /> Thể loại: <select th:field="*{theloaisach}"
+														class="form-control" required>
+														<option th:each="category : ${listcategory}"
+															th:value="${category.maTheLoai}"
+															th:text="${category.tenTheLoai}"></option>
+													</select>
+													<!-- <form:errors path="theloaisach" cssClass="error" /> -->
+
+													<br /> Giá: <input th:field="*{gia}" type="datetime"
+														class="form-control" required />
+													<!-- <form:errors path="gia" cssClass="error" /> -->
+													<br /> Tác giả: <input th:field="*{tenTacGia}"
+														class="form-control" required />
+													<!-- <form:errors path="tenTacGia" cssClass="error" /> -->
+													<br /> Mô tả:
+													<textarea th:field="*{moTa}" class="form-control" required></textarea>
+													<!-- 	<form:errors path="moTa" cssClass="error" /> -->
+													<br /> Khuyến mãi: <input th:field="*{khuyenMai}"
+														type="datetime" class="form-control" required />
+													<!-- <form:errors path="khuyenMai" cssClass="error" /> -->
+													<br /> Ngày sản xuất: <input th:field="*{ngayXuatBan}"
+														class="form-control" required />
+													<!-- <form:errors path="ngayXuatBan" cssClass="error" /> -->
+													<br /> Số lượng: <input th:field="*{soLuong}"
+														class="form-control" required />
+													<!-- <form:errors path="soLuong" cssClass="error" /> -->
+													<br /> <br />
+													<button type="submit">Lưu</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--FOOTER -->
+	<script type="text/javascript">
+		function uploadFile() {
+			var preview = document.querySelector('img');
+			var file = document.querySelector('input[type=file]').files[0];
+			var reader = new FileReader();
+
+			reader.onloadend = function() {
+				preview.src = reader.result;
+			}
+
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
+		}
+	</script>
+
+	<div th:insert="~{admin/footer :: footer_admin}"></div>
+
+</body>
+
+</html>

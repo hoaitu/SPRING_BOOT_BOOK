@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{link :: links}"></div>
+	<!-- Add your site or application content here -->
+	<!--Header Area Start-->
+	<!-- NƠI GẮN HEADER -->
+	<div th:insert="~{header :: header_in}"></div>
+	<!-- Mobile Menu End -->
+   
+  
+<!-- Breadcrumbs Area Start -->
+	<div class="breadcrumbs-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="breadcrumbs">
+						<h2>Đăng kí</h2>
+						<ul class="breadcrumbs-list">
+							<li><a title="Return to Home" href="/">Trang chủ</a></li>
+							<li>Đăng kí</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumbs Area Start -->
+
+
+    
+    <!-- Loging Area Start -->
+    <div class="login-account section-padding">
+      <div class="container">
+        <div
+          class="row"
+          style="display: flex; align-items: center; justify-content: center;"
+        >
+          <div class="col-md-6 col-sm-6">
+            <form
+              name="signupForm"
+              action=""
+              class="create-account-form"
+              method="post"
+            >
+              <!-- <% ArrayList<String> listMsg = null;
+                            if((listMsg = (ArrayList<String>) request.getAttribute("listMsg"))!=null){
+                            for (int i = 0; i < listMsg.size(); i++) {%>
+                          <h3 style="color: red"><%=listMsg.get(i)%></h3>
+                        <%
+                            }
+                            }
+                        %> -->
+
+              <h2 class="heading-title">
+                Tạo tài khoản mới
+              </h2>
+              <p id="result"></p>
+              <p class="form-row">
+                <input
+                  style="outline: none;"
+                  onfocusout="display()"
+                  type="email"
+                  name="email"
+                  placeholder="Địa chỉ email"
+                />
+              </p>
+              <p class="form-row">
+                <input
+                  style="outline: none;"
+                  type="password"
+                  name="password"
+                  placeholder="Mật khẩu"
+                />
+              </p>
+              <p class="form-row">
+                <input
+                  style="outline: none;"
+                  type="password"
+                  name="cfpassword"
+                  placeholder="Nhập lại mật khẩu"
+                />
+              </p>
+              <div class="submit">
+                <button
+                  name="submitcreate"
+                  id="submitcreate"
+                  type="submit"
+                  class="btn-default"
+                >
+                  <span>
+                    <i class="fa fa-user left"></i>
+                    Đăng kí
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loging Area End -->
+    <!-- Footer Area Start -->
+ <!-- Footer Area Start -->
+	
+		<!-- Footer Area Start -->
+	<!-- NƠI GẮN FOOTER -->
+	<div th:insert="~{footer :: footer_in}"></div>
+  </body>
+</html>

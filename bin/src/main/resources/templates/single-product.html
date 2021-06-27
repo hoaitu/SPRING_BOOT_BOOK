@@ -1,0 +1,453 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>Home One || Witter Multipage Responsive Template</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Mọi link bootrap.... -->
+
+</head>
+<body>
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{link :: links}"></div>
+	<!-- Add your site or application content here -->
+	<!--Header Area Start-->
+	<!-- NƠI GẮN HEADER -->
+	<div th:insert="~{header :: header_in}"></div>
+	<!-- Breadcrumbs Area Start -->
+	<div class="breadcrumbs-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="breadcrumbs">
+						<h2>Chi tiết sản phẩm</h2>
+						<ul class="breadcrumbs-list">
+							<li><a title="Return to Home" href="/">Trang chủ</a></li>
+							<li>chi tiết sản phẩm</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumbs Area Start -->
+
+
+	<!-- Single Product Area Start -->
+	<div class="single-product-area section-padding">
+		<div class="container">
+			<div th:each="book : ${books}">
+				<div class="row">
+
+					<div class="col-md-6 col-sm-7">
+						<div class="single-product-image-inner">
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<!-- <% Sach sach = (Sach) request.getAttribute("sach");%> -->
+								<div role="tabpanel" class="tab-pane active" id="one"
+									style="width: 90%; margin-bottom: 30px; position: relative;">
+									<a class="venobox" href="img/single-product/bg-1.jpg"
+										data-gall="gallery" title=""> <img
+										th:src="@{${book.hinhAnh}}" alt="" />
+									</a>
+									<!-- <% if (sach.getKhuyenMai() > 0) { %> -->
+									<div
+										style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+										<img th:src="@{/resource/user/img/sale.png}" alt="" />
+										<p
+											style="font-size: 20px; position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); color: white;">
+											30%</p>
+									</div>
+									<!-- <%}%> -->
+								</div>
+								<div role="tabpanel" class="tab-pane" id="two">
+									<a class="venobox" href="img/single-product/bg-2.jpg"
+										data-gall="gallery" title=""> <img
+										th:src="@{/resource/user/img/shop/tt12.jpg}" alt="" />
+									</a>
+								</div>
+								<div role="tabpanel" class="tab-pane" id="three">
+									<a class="venobox" href="img/single-product/bg-3.jpg"
+										data-gall="gallery" title=""> <img
+										th:src="@{/resource/user/img/shop/tt12.jpg}" alt="" />
+									</a>
+								</div>
+							</div>
+							<!-- Nav tabs -->
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-sm-5">
+						<div class="single-product-details">
+							<h2 th:text="${book.tenSach}"></h2>
+							<div class="single-product-price">
+								<!-- <% if (sach.getKhuyenMai() > 0) { %> -->
+								<h2 th:text="${book.gia}">.000đ</h2>
+								<h2>.000 VNĐ</h2>
+								<span style="color: black; font-size: 18px;" class="old-price">500.000đ</span>
+								<!-- <%} else {%>
+                        <h2><%= sach.getGia()%>.000đ</h2>
+                        <%}%> -->
+							</div>
+							<form action="" method="get">
+								<input style="visibility: hidden;" name="maSach" type="text"
+									value="1" />
+								<div class="product-attributes clearfix">
+									<span class="pull-left" id="quantity-wanted-p"> <span
+										class="dec qtybutton">-</span> <input id="soLuongMua"
+										type="text" name="soLuongMua" value="1"
+										class="cart-plus-minus-box" /> <span class="inc qtybutton">+</span>
+									</span> <span> <input type="submit"
+										class="cart-btn btn-default" value="Thêm vào giỏ hàng" />
+									</span>
+								</div>
+							</form>
+							<div class="add-to-wishlist">
+								<a class="wish-btn" href="#"> <i class="far fa-heart"></i>
+									Thêm vào danh sách yêu thích
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="p-details-tab-content">
+						<div class="p-details-tab">
+							<ul class="p-details-nav-tab" role="tablist">
+								<li role="presentation" class="active"><a href="#more-info"
+									aria-controls="more-info" role="tab" data-toggle="tab">Giới
+										thiệu sản phẩm</a></li>
+								<li role="presentation"><a href="#data"
+									aria-controls="data" role="tab" data-toggle="tab">Thông tin
+										sản phẩm</a></li>
+								<li role="presentation"><a href="#reviews"
+									aria-controls="reviews" role="tab" data-toggle="tab">Bình
+										luận sản phẩm</a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+						<div class="tab-content review">
+							<div role="tabpanel" class="tab-pane active" id="more-info">
+								<p>Hay cực kì</p>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="data">
+								<table class="table-data-sheet">
+									<tbody>
+										<tr class="odd">
+											<td>Tên</td>
+											<td>Book Name</td>
+										</tr>
+										<tr class="even">
+											<td>Thể loại</td>
+											<td>Tiểu thuyết</td>
+										</tr>
+										<tr class="odd">
+											<td>Tên tác giả</td>
+											<td>Ngô Tất Tố</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="reviews">
+								<div id="product-comments-block-tab">
+									<div class="comment-here">
+										<div class="user-comment">
+											<i class="fas fa-user-ninja"></i>
+										</div>
+										<form name="commentArea" class="AreaComment">
+											<label style="display: block;">NoName</label> <input
+												type="text" placeholder="Thêm bình luận ...."
+												name="commentText" /> <input type="button" value="Đăng"
+												onclick="comment()" />
+										</form>
+									</div>
+									<div id="CommentArea">
+										<!-- <%
+                                        ArrayList<Comment> listComment = (ArrayList<Comment>) request.getAttribute("listComment");
+                                        for (int i = 0; i < listComment.size(); i++) {
+                                    %> -->
+										<div class="comment-here"
+											style="box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); padding: 10px 5px;">
+											<div class="user-comment">
+												<i class="fas fa-user-ninja"></i>
+											</div>
+											<div class="AreaComment"
+												style="display: flex; flex-direction: column;">
+												<p style="margin: 0px; font-weight: 600;">NoName</p>
+												<p>No commnent</p>
+											</div>
+										</div>
+
+										<!-- <%}%> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Single Product Area End -->
+	<!-- Related Product Area Start -->
+	<div class="related-product-area">
+		<h2 class="section-title">Sản phẩm tương tự</h2>
+		<div class="container">
+			<div class="row">
+				<div class="related-product indicator-style">
+					<!-- <% ArrayList<Sach> listSach = (ArrayList<Sach>) request.getAttribute("listSach");
+                    for (int i = 0; i < listSach.size(); i++) { %> -->
+					<div class="col-md-3">
+						<div class="single-banner">
+							<div class="product-wrapper">
+								<a href="#" class="single-banner-image-wrapper"> <img alt=""
+									th:src="@{/resource/user/img/shop/tt20.jpeg}" />
+								</a>
+								<div class="product-description">
+									<div class="functional-buttons">
+										<a title="Thêm vào giỏ hàng" href="#"> <i
+											class="fa fa-shopping-cart"></i>
+										</a> <a href="#" title="Add to Wishlist"> <i
+											class="far fa-heart"></i>
+										</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+											data-target="#productModal1"> <i
+											class="fas fa-compress-alt"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+							<div
+								style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+								<img th:src="@{/resource/user/img/sale.png}" alt="" />
+								<p
+									style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+									30%</p>
+							</div>
+							<div class="banner-bottom text-center">
+								<div class="banner-bottom-title" style="height: 40px;">
+									<a href="#">Book Name </a>
+								</div>
+								<div style="color: #32b5f3;" class="price-2">
+									250.000đ <span style="color: black;" class="old-price">500.000đ</span>
+								</div>
+							</div>
+							<!-- <% } else {%>
+                        <div class="banner-bottom text-center">
+                            <div class="banner-bottom-title" style="height: 40px">
+                                <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                </a>
+                            </div>
+                            <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>đ</span>
+                            </div>
+                        </div>
+                        <% }%> -->
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="single-banner">
+							<div class="product-wrapper">
+								<a href="#" class="single-banner-image-wrapper"> <img alt=""
+									src="img/shop/tt20.jpeg" />
+								</a>
+								<div class="product-description">
+									<div class="functional-buttons">
+										<a title="Thêm vào giỏ hàng" href="#"> <i
+											class="fa fa-shopping-cart"></i>
+										</a> <a href="#" title="Add to Wishlist"> <i
+											class="far fa-heart"></i>
+										</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+											data-target="#productModal1"> <i
+											class="fas fa-compress-alt"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+							<div
+								style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+								<img src="img/sale.png" alt="" />
+								<p
+									style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+									30%</p>
+							</div>
+							<div class="banner-bottom text-center">
+								<div class="banner-bottom-title" style="height: 40px;">
+									<a href="#">Book Name </a>
+								</div>
+								<div style="color: #32b5f3;" class="price-2">
+									250.000đ <span style="color: black;" class="old-price">500.000đ</span>
+								</div>
+							</div>
+							<!-- <% } else {%>
+                        <div class="banner-bottom text-center">
+                            <div class="banner-bottom-title" style="height: 40px">
+                                <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                </a>
+                            </div>
+                            <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>đ</span>
+                            </div>
+                        </div>
+                        <% }%> -->
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="single-banner">
+							<div class="product-wrapper">
+								<a href="#" class="single-banner-image-wrapper"> <img alt=""
+									src="img/shop/tt20.jpeg" />
+								</a>
+								<div class="product-description">
+									<div class="functional-buttons">
+										<a title="Thêm vào giỏ hàng" href="#"> <i
+											class="fa fa-shopping-cart"></i>
+										</a> <a href="#" title="Add to Wishlist"> <i
+											class="far fa-heart"></i>
+										</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+											data-target="#productModal1"> <i
+											class="fas fa-compress-alt"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+							<div
+								style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+								<img src="img/sale.png" alt="" />
+								<p
+									style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+									30%</p>
+							</div>
+							<div class="banner-bottom text-center">
+								<div class="banner-bottom-title" style="height: 40px;">
+									<a href="#">Book Name </a>
+								</div>
+								<div style="color: #32b5f3;" class="price-2">
+									250.000đ <span style="color: black;" class="old-price">500.000đ</span>
+								</div>
+							</div>
+							<!-- <% } else {%>
+                        <div class="banner-bottom text-center">
+                            <div class="banner-bottom-title" style="height: 40px">
+                                <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                </a>
+                            </div>
+                            <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>đ</span>
+                            </div>
+                        </div>
+                        <% }%> -->
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="single-banner">
+							<div class="product-wrapper">
+								<a href="#" class="single-banner-image-wrapper"> <img alt=""
+									src="img/shop/tt20.jpeg" />
+								</a>
+								<div class="product-description">
+									<div class="functional-buttons">
+										<a title="Thêm vào giỏ hàng" href="#"> <i
+											class="fa fa-shopping-cart"></i>
+										</a> <a href="#" title="Add to Wishlist"> <i
+											class="far fa-heart"></i>
+										</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+											data-target="#productModal1"> <i
+											class="fas fa-compress-alt"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+							<div
+								style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+								<img src="img/sale.png" alt="" />
+								<p
+									style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+									30%</p>
+							</div>
+							<div class="banner-bottom text-center">
+								<div class="banner-bottom-title" style="height: 40px;">
+									<a href="#">Book Name </a>
+								</div>
+								<div style="color: #32b5f3;" class="price-2">
+									250.000đ <span style="color: black;" class="old-price">500.000đ</span>
+								</div>
+							</div>
+							<!-- <% } else {%>
+                        <div class="banner-bottom text-center">
+                            <div class="banner-bottom-title" style="height: 40px">
+                                <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                </a>
+                            </div>
+                            <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>đ</span>
+                            </div>
+                        </div>
+                        <% }%> -->
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="single-banner">
+							<div class="product-wrapper">
+								<a href="#" class="single-banner-image-wrapper"> <img alt=""
+									src="img/shop/tt20.jpeg" />
+								</a>
+								<div class="product-description">
+									<div class="functional-buttons">
+										<a title="Thêm vào giỏ hàng" href="#"> <i
+											class="fa fa-shopping-cart"></i>
+										</a> <a href="#" title="Add to Wishlist"> <i
+											class="far fa-heart"></i>
+										</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+											data-target="#productModal1"> <i
+											class="fas fa-compress-alt"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+							<div
+								style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+								<img src="img/sale.png" alt="" />
+								<p
+									style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+									30%</p>
+							</div>
+							<div class="banner-bottom text-center">
+								<div class="banner-bottom-title" style="height: 40px;">
+									<a href="#">Book Name </a>
+								</div>
+								<div style="color: #32b5f3;" class="price-2">
+									250.000đ <span style="color: black;" class="old-price">500.000đ</span>
+								</div>
+							</div>
+							<!-- <% } else {%>
+                        <div class="banner-bottom text-center">
+                            <div class="banner-bottom-title" style="height: 40px">
+                                <a href=<%= Util.fullPath("singleProductController?idProduct=") + listSach.get(i).getMaSach()%>><%=listSach.get(i).getTenSach()%>
+                                </a>
+                            </div>
+                            <div style="color: #32b5f3" class="price-2"><%=listSach.get(i).getGia()%>.000<span>đ</span>
+                            </div>
+                        </div>
+                        <% }%> -->
+						</div>
+					</div>
+					<!-- <%}%> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Related Product Area End -->
+	<!-- News Letter Area End -->
+	<!-- Footer Area Start -->
+	<!-- NƠI GẮN FOOTER -->
+	<div th:insert="~{footer :: footer_in}"></div>
+</body>
+</html>

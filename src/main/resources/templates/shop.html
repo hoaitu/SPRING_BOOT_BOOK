@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Writer BookStore</title>
+
+</head>
+<body>
+
+	<!-- NÃÂÃÂÃÂ I GÃÂÃÂ¡ÃÂÃÂºÃÂÃÂ®N LINK VÃÂÃÂÃÂÃÂO -->
+	<div th:insert="~{link :: links}"></div>
+	<!-- Add your site or application content here -->
+	<!--Header Area Start-->
+	<!-- NÃÂÃÂÃÂ I GÃÂÃÂ¡ÃÂÃÂºÃÂÃÂ®N HEADER -->
+	<div th:insert="~{header :: header_in}"></div>
+	<!-- Mobile Menu End -->
+
+	<!--Header Area End-->
+	<!-- Breadcrumbs Area Start -->
+	<div class="breadcrumbs-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="breadcrumbs">
+						<h2>SaÌch</h2>
+						<ul class="breadcrumbs-list">
+							<li><a title="Return to Home" href="/">Trang chủ</a></li>
+							<li>SaÌch</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumbs Area Start -->
+
+
+	<!-- Shop Area Start -->
+	<div class="shopping-area section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<div class="shop-widget">
+						<div class="shop-widget-top">
+							<aside class="widget widget-categories">
+								<h2 class="sidebar-title text-center">Danh mục</h2>
+								<div th:each="category : ${listcategory}">
+									<ul class="sidebar-menu">
+
+										<li><a th:href="@{/shop/} + ${category.maTheLoai}"> <i
+												class="fa fa-angle-double-right"></i> <span
+												th:text="${category.tenTheLoai}"></span></a></li>
+
+										<!-- <% } %> -->
+									</ul>
+								</div>
+							</aside>
+							<aside class="widget shop-filter">
+								<h2 class="sidebar-title text-center">Giá</h2>
+								<div class="info-widget">
+									<div class="price-filter">
+										<div id="slider-range"></div>
+										<div class="price-slider-amount">
+											<input type="text" id="amount" name="price"
+												placeholder="Add Your Price" />
+											<div class="widget-buttom">
+												<input type="submit" value="Tìm kiếm theo giá" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</aside>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+				<div id="items" class="col-md-9 col-sm-9 col-xs-12">
+					<div class="shop-tab-area">
+						<div class="shop-tab-list" style="padding: 15px 15px 15px 15px;">
+							<div class="shop-tab-pill pull-left">
+								<ul>
+									<li class="active" id="left"><a data-toggle="pill"
+										href="#home"><i class="fa fa-th"></i></a></li>
+									<li><a data-toggle="pill" href="#menu1"><i
+											class="fa fa-th-list"></i></a></li>
+								</ul>
+							</div>
+
+
+
+
+
+
+							<!-- TÃÂÃÂ¬m kiÃÂ¡ÃÂºÃÂ¿m  -->
+							<div class="search-book">
+								<form name="" class="form-inline">
+									<input class="form-control mr-sm-2" type="text" name="tenSach"
+										placeholder="Search" aria-label="Search" id="autoSearch" />
+									<div id="search"
+										style="visibility: visible; opacity: 1; transform: scaleY(1);"></div>
+									<button class="btn btn-outline-success my-2 my-sm-0"
+										type="button" onclick="search();">
+										<i class="fas fa-search"></i>
+									</button>
+								</form>
+							</div>
+
+
+							<!-- Final tÃÂÃÂ¬m kiÃÂ¡ÃÂºÃÂ¿m   -->
+
+
+
+
+
+						</div>
+						<div class="tab-content">
+							<div class="row tab-pane fade in active" id="home">
+								<div id="resuilts">
+									<div th:each="book : ${listbook}">
+										<!-- <%ArrayList<Sach> listSach = (ArrayList<Sach>) request.getAttribute("listSach");%>
+                                <%
+                                    for (int i = 0; i < listSach.size(); i++) {
+                                %> -->
+										<div class="shop-single-product-area">
+											<div class="col-md-4 col-sm-6">
+												<div class="single-banner">
+													<div class="product-wrapper">
+														<a th:href="@{/single-product/} + ${book.maSach}"
+															class="single-banner-image-wrapper"> <img alt=""
+															th:src="@{${book.hinhAnh}}" />
+														</a>
+
+														<!--  -->
+
+
+														<!-- NÃ¡ÂºÂ¿u chÃÂ°a nhÃ¡ÂºÂ­n ÃÂc User nÃÂ o login thÃÂ¬ add card sÃ¡ÂºÂ½ bÃ¡Â»Â ÃÂÃ¡ÂºÂ£y qua trang login -->
+														<!-- Tu: Sercurity: if user don't login user can't  visit Card + buy Book + Number in Card will not increse(tang)  -->
+														<div th:if="${#request.userPrincipal==null}">
+															<div class="product-description">
+																<div class="functional-buttons">
+
+																	<a title="ThÃÂªm vÃÂ o giÃ¡Â»Â hÃÂ ng"
+																		th:href="@{/login}"><i class="fa fa-shopping-cart"></i>
+																	</a> <a href="#"
+																		title="ThÃÂªm vÃÂ o danh sÃÂ¡ch yÃÂªu thÃÂ­ch">
+																		<i class="far fa-heart"></i>
+																	</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+																		data-target="#productModal1"> <i
+																		class="fas fa-compress-alt"></i>
+																	</a>
+
+																</div>
+
+															</div>
+														</div>
+													</div>
+
+													<!-- NÃ¡ÂºÂ¿u ÃÂÃÂ£ nhÃ¡ÂºÂ­n ÃÂc User nÃÂ o rÃ¡Â»Âi thÃÂ¬ add sÃ¡ÂºÂ½ ÃÂc sÃ¡Â»Â trong giÃ¡Â»Â hÃÂ ng sÃ¡ÂºÂ» tÃÂng lÃÂªn  -->
+													<!-- Tu: Sercurity: if user login success new can visit Card + buy Book + Number in Card will increse(tang)  -->
+													<div th:if="${#request.userPrincipal !=null}">
+														<div class="product-description">
+															<div class="functional-buttons">
+
+																<a title="ThÃÂªm vÃÂ o giÃ¡Â»Â hÃÂ ng"
+																	th:href="@{/cart/add/}+${book.maSach}"><i
+																	class="fa fa-shopping-cart"></i> </a> <a href="#"
+																	title="ThÃÂªm vÃÂ o danh sÃÂ¡ch yÃÂªu thÃÂ­ch">
+																	<i class="far fa-heart"></i>
+																</a> <a href="#" title="Xem nhanh" data-toggle="modal"
+																	data-target="#productModal1"> <i
+																	class="fas fa-compress-alt"></i>
+																</a>
+
+															</div>
+														</div>
+													</div>
+
+													<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+													<div
+														style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+														<img th:src="@{/resource/user/img/sale.png}" alt="" />
+														<p
+															style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+															30%</p>
+													</div>
+													<div class="banner-bottom text-center">
+														<div class="banner-bottom-title" style="height: 40px;">
+															<a href="#"> <span th:text="${book.tenSach}">
+															</span>
+															</a>
+														</div>
+														<div style="color: #32b5f3;" class="price-2">
+															<span th:text="${book.gia}+'.000 VNĐ'"> </span> <span
+																style="color: black;" class="old-price">500.000
+																VNĐ</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+
+								</div>
+							</div>
+
+							<!-- ////////////////////////////////////////////////////////////////////// -->
+
+
+							<div id="menu1" class="tab-pane fade">
+
+								<div id="single-product" class="row">
+									<div th:each="book : ${listbook}">
+										<div class="single-shop-product">
+											<div class="col-xs-12 col-sm-5 col-md-4">
+												<div class="left-item">
+													<a th:href="@{/single-product/} + ${book.maSach}"
+														title="Book Name"> <img th:src="@{${book.hinhAnh}}"
+														alt="" />
+													</a>
+												</div>
+												<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+												<div
+													style="width: 15%; z-index: 999; position: absolute; top: 0; right: 0;">
+													<img th:src="@{/resource/user/img/sale.png}" alt="" />
+													<p
+														style="font-size: 14px; position: absolute; left: 15%; top: 55%; transform: translate(0, -50%); color: white;">
+														30%</p>
+												</div>
+												<!-- <%}%> -->
+											</div>
+											<div class="col-xs-12 col-sm-7 col-md-8">
+												<div class="deal-product-content">
+													<h4>
+														<a th:href="@{/single-product/} + ${book.maSach}"
+															title="Book Name"><span th:text="${book.tenSach}"></span></a>
+													</h4>
+													<div class="product-price">
+														<!-- <% if (listSach.get(i).getKhuyenMai() > 0) { %> -->
+														<span class="new-price"
+															th:text="${book.gia}+'.000 VNÃÂ'"></span> <span
+															class="old-price">500.000 VNÃÂ</span>
+														<!-- <%} else {%>
+                                                <span class="new-price"><%=listSach.get(i).getGia()%>.000ÃÂÃÂÃÂÃÂ</span>
+                                                <%}%> -->
+													</div>
+													<p>Hay cÃÂÃÂ¡ÃÂÃÂ»ÃÂÃÂ±c
+														kÃÂÃÂ¡ÃÂÃÂ»ÃÂÃÂ³</p>
+													<div class="availability">
+														<span><a th:href="@{/cart/add/}+${book.maSach}">Mua
+																Ngay</a></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- ///////////////////////////////////////// -->
+
+							<div>&nbsp</div>
+
+							<!-- TU: paging(Phan trang) Ajax ; 1 page will have 12 book + currentPage is number show in page (1 2 3 4 5 ..) -->
+
+							<nav aria-label="Page navigation example">
+								<div id="pagination" style="margin: auto; width: 50%; color: blue; padding-top: 15px;" >
+									<th:block th:each="i: ${#numbers.sequence(1, totalPage )}">
+										<button th:if="${i != 1}" class="paging-item active"
+											type="button" name="currentPage">[[${i}]]</button>
+
+										<button th:unless="${i != 1}" class="paging-item"
+											type="button" id="phantrangid" name="currentPage">[[${i}]]</button>
+
+									</th:block>
+								</div>
+							</nav>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- /**
+			03/06/2021
+		*/ -->
+		</div>
+	</div>
+	<!-- Shop Area End -->
+
+	<!-- Footer Area Start -->
+
+	<!-- Footer Area Start -->
+
+
+
+
+
+	<script type="text/javascript">
+		function search() {
+			$
+					.ajax({
+						type : "GET",
+						url : "search",
+						data : 'tenSach=' + $("#autoSearch").val(),
+						success : function(res) {
+							var result = "";
+							/* <img th:src="@{${book.hinhAnh}}" */
+								/* alt="" /> */
+							result += "<ul>";
+							$
+									.each(
+											res,
+											function(k, v) {
+												result += '<a href="/single-product/'
+													+ v.maSach
+													+ '">'
+														+ '<img src="'+v.hinhAnh+'" alt="" />'
+
+														+ '<li class="list-group-item link-class">'
+														+ v.tenSach
+														+ '</a></li><br/>';
+												/* for (var i = 0; i < v.length; i++) {
+													result += v[i] + "/n";
+												}
+												console.log(result);
+												 */});
+
+							result += "</ul>";
+
+							/* $('#result').html(result); */
+							$('#search').html(result);
+						},
+						error : function(res) {
+							alert("Error while request!");
+						}
+
+					});
+		}
+	</script>
+
+	<!-- PhÃÂ¢n trang Ajx -->
+
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$(".paging-item")
+									.click(
+											function() {
+												/* 	var value = $(this).val(); */
+												var sotrang = $(this).text();
+												var spbatdau = (sotrang - 1) * 12;
+												var result = "";
+												console.log(sotrang);
+
+												$
+														.ajax({
+															type : "GET",
+															url : "shops",
+															data : {
+																'currentPage' : sotrang
+															},
+															dataType : "json",
+
+															success : function(
+																	msg) {
+																for (var i = 0; i < msg.length; i++) {
+																	result += '<div class="col-md-4 col-sm-6" >'
+																	result += '<a href="/single-product/'
+																			+ msg[i].maSach
+																			+ '"class="single-banner-image-wrapper"><img alt="" src = "'+msg[i].hinhAnh+'"/></a>'
+																	result += '<div class="banner-bottom text-center"'
+																			+ '<div class="banner-bottom-title" style="height: 40px">'
+																			+ '<a href="">'
+																			+ msg[i].tenSach
+																			+ ' </a>'
+																			+ '</div>'
+																			+ '</div>'
+																			+ '</div>'
+
+																}
+																console
+																		.log("Mess laf: "
+																				+ result);
+																/*	$("#search").html(result);*/
+																/* TÃÂÃÂªn trÃÂÃÂ¹ng vs id chÃÂ¡ÃÂ»ÃÂ ÃÂÃÂÃÂ¡ÃÂ»ÃÂ hiÃÂ¡ÃÂ»ÃÂn thÃÂ¡ÃÂ»ÃÂ ra dao diÃÂ¡ÃÂ»ÃÂn: resuilts  */
+																$("#resuilts")
+																		.html(
+																				result);
+															}
+														});
+											});
+						});
+	</script>
+
+
+
+
+
+
+
+
+	<!-- NÃÂÃÂÃÂ I GÃÂÃÂ¡ÃÂÃÂºÃÂÃÂ®N FOOTER -->
+	<div th:insert="~{footer :: footer_in}"></div>
+</body>
+</html>

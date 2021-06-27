@@ -1,0 +1,126 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Product Edit | WRITER Admin</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body>
+
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{admin/linkAdm :: links_admin}"></div>
+
+	<div class="all-content-wrapper">
+		<!-- Single pro tab start-->
+		<div class="single-product-tab-area mg-b-30">
+			<!-- Single pro tab review Start-->
+			<div class="single-pro-review-area">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="review-tab-pro-inner">
+								<ul id="myTab3" class="tab-review-design">
+									<li class="active"><a href="#description"><i
+											class="icon nalika-edit" aria-hidden="true"></i> Chỉnh sửa
+											sản phẩm</a></li>
+								</ul>
+								<div style="float: right;">
+									<h4>
+										<a th:href="@{/admin}">Quay lại</a>
+									</h4>
+								</div>
+
+								<div id="myTabContent" class="tab-content custom-product-edit">
+
+
+									<div class="product-tab-list tab-pane fade active in"
+										id="description">
+										<div class="row">
+
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+												<!-- <form action="" method="POST" modelAttribute="book> -->
+												<form method="POST" th:object="${books}"
+													enctype="multipart/form-data">
+													<input type="hidden" th:field="*{maSach}"> <br />
+													Hình ảnh: <input type="file" name="hinhAnh" id="hinhAnh"
+														class="form-control-file"
+														accept="image/png, image/jpeg, image/jpg"
+														onchange="uploadFile()" />
+													<p>
+														<img alt="Logo Preview" id="thumbnail" height="150" />
+													</p>
+													<br /> Tên sách: <input th:field="*{tenSach}"
+														class="form-control" required /> <br /> Thể loại: <input
+														type="text" th:field="*{theloaisach}" class="form-control" />
+													<br /> Giá: <input th:field="*{gia}" type="text"
+														class="form-control" required /> <br /> Tác giả: <input
+														th:field="*{tenTacGia}" class="form-control" type="text" />
+													<br /> Mô tả:
+													<textarea th:field="*{moTa}" class="form-control"
+														type="text"></textarea>
+													<br /> Khuyến mãi: <input th:field="*{khuyenMai}"
+														type="text" class="form-control" required /> <br /> Ngày
+													sản xuất: <input th:field="*{ngayXuatBan}"
+														class="form-control" type="text" required /> <br /> Số
+													lượng: <input th:field="*{soLuong}" type="number"
+														class="form-control" required /> <br /> <br />
+
+													<div class="row">
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+															<div class="text-center custom-pro-edt-ds">
+																<a href="">
+																	<button type="submit"
+																		class="btn btn-ctl-bt waves-effect waves-light m-r-10">
+																		Lưu</button>
+																</a> <a href="">
+																	<button type="button"
+																		class="btn btn-ctl-bt waves-effect waves-light">
+																		Hủy</button>
+																</a>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	function uploadFile() {
+		  var preview = document.querySelector('img');
+		  var file    = document.querySelector('input[type=file]').files[0];
+		  var reader  = new FileReader();
+
+		  reader.onloadend = function () {
+		    preview.src = reader.result;
+		  }
+
+		  if (file) {
+		    reader.readAsDataURL(file);
+		  } else {
+		    preview.src = "";
+		  }
+		}
+</script>
+	<!--FOOTER -->
+
+	<div th:insert="~{admin/footer :: footer_admin}"></div>
+
+</body>
+
+</html>

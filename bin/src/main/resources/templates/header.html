@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body th:fragment="header_in">
+
+	<!--Header Area Start-->
+	<div class="header-area">
+		<div class="container">
+			<div class="row header-header">
+				<div class="col-md-2 col-sm-6 col-xs-6">
+					<div class="header-logo">
+						<a href="/"> <img th:src="@{/resource/user/img/logo.png}"
+							alt="" />
+						</a>
+					</div>
+				</div>
+				<div class="col-md-1 col-sm-6 visible-sm col-xs-6">
+					<div class="header-right">
+						<ul>
+							<li class="user-login"><a href="#"> <i
+									class="flaticon-people"></i>
+							</a>
+								<div class="sub-user">
+									<div class="user-item">
+										<div class="sign-in">
+											<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">ÄÄng
+												kÃ½</a>
+										</div>
+									</div>
+									<div class="user-item">
+										<div class="sign-in">
+											<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">ÄÄng
+												nháº­p</a>
+										</div>
+									</div>
+								</div></li>
+							<li class="shoping-cart"><a href="cart"> <i
+									class="flaticon-shop"></i>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-9 col-sm-12 hidden-xs">
+					<div class="mainmenu text-center">
+						<nav>
+							<ul id="nav">
+								<li><a th:href="@{/shop}">SÁCH</a></li>
+								<li><a th:href="@{/shop}">KHUYẾN MÃI</a></li>
+								<li><a href="#footer">LIÊN HỆ</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="col-md-1 hidden-sm">
+					<div class="header-right">
+						<ul>
+							<li class="user-login"><a> <i class="flaticon-people"></i>
+
+							</a> <!-- ============================================ -->
+
+								<div class="sub-user">
+									<!-- KHI CHƯA ĐĂNG NHẬP VÀO -->
+									<div th:if="${#request.userPrincipal==null}">
+
+										<div class="user-item">
+											<div class="sign-in">
+												<i class="fas fa-user-plus"></i> <a th:href="@{/signup}">Đăng
+													ký</a>
+											</div>
+										</div>
+										<div class="user-item">
+											<div class="sign-in">
+												<i class="fas fa-sign-in-alt"></i> <a th:href="@{/login}">Đăng
+													nhập</a>
+											</div>
+										</div>
+									</div>
+
+									<!-- </div> -->
+
+									<!--  -->
+
+
+									<!-- <div class="sub-user"> -->
+
+									<!-- KHI ĐÃ ĐĂNG NHẬP VÀO NHẬN ĐC USERNAME -->
+									<div th:if="${#request.userPrincipal !=null}">
+
+										<div class="user-item">
+											<div class="sign-in">
+												<span style="color: #000"
+													th:utext="${#request.userPrincipal.name}"></span>
+											</div>
+										</div>
+
+										<div class="user-item">
+											<div class="sign-in">
+												<i class="fas fa-user-plus"></i> <a href="#">Thông tin
+													tài khoản</a>
+											</div>
+										</div>
+
+
+										<div class="user-item">
+
+
+
+
+
+											<div class="sign-in"
+												th:if="${#request.userPrincipal != null}">
+												<i class="fas fa-user-plus"></i> <a th:href="@{/logout}">Logout
+												</a>
+
+
+												<!-- <form name='logout' th:action="@{/logout}" method='POST'>
+													<input type="hidden" name="${_csrf.parameterName}"
+														value="${_csrf.token}" /> 
+														
+														<input id="submitcreate"
+														type="submit" value="Logout" name="submit" />
+												</form> -->
+
+
+												<!-- <a th:href="@{/logout}">Logout
+												</a> -->
+												<!-- th:if="${#request.userPrincipal != null}" -->
+											</div>
+										</div>
+									</div>
+								</div> <!-- ================================================================== -->
+
+							</li>
+
+							<li class="shoping-cart"><a href="cart"> <i
+									class="flaticon-shop"></i>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Header Area End-->
+
+
+
+
+	<!-- Mobile Menu Start -->
+	<div class="mobile-menu-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="mobile-menu">
+						<nav id="dropdown">
+							<ul>
+								<li><a th:href="@{/shop/}">SÃCH</a></li>
+								<li><a th:href="@{/shop/} ">KHUYáº¾N MÃI</a></li>
+								<li><a href="#footer">LIÃN Há»Â</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Mobile Menu End -->
+
+</body>
+</html>

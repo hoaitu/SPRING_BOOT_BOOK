@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>WRITER Admin</title>
+</head>
+<body th:fragment="header_admin">
+
+
+	<div class="left-sidebar-pro">
+		<nav id="sidebar" class="">
+			<div class="sidebar-header">
+				<a th:href="@{/admin}"><img class="main-logo"
+					th:src="@{/resource/admin/img/logo/logo.png}" alt="" /></a> <strong><img
+					th:src="@{/resource/admin/img/logo/logosn.png}" alt="" /></strong>
+			</div>
+			<div class="nalika-profile">
+				<div class="profile-dtl">
+					<a href="#"><img
+						th:src="@{/resource/admin/img/notification/4.jpg}" alt="" /></a>
+					<h2>
+						Lakian <span class="min-dtn">Das</span>
+					</h2>
+				</div>
+				<div class="profile-social-dtl">
+					<ul class="dtl-social">
+						<li><a href="#"><i class="icon nalika-facebook"></i></a></li>
+						<li><a href="#"><i class="icon nalika-twitter"></i></a></li>
+						<li><a href="#"><i class="icon nalika-linkedin"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="left-custom-menu-adp-wrap comment-scrollbar">
+				<nav class="sidebar-nav left-sidebar-menu-pro">
+					<ul class="metismenu" id="menu1">
+						<li class="active"><a class="has-arrow"
+							href="<%=request.getContextPath()%>/admin/listProduct"> <i
+								class="icon nalika-home icon-wrap"></i> <span
+								class="mini-click-non">Quản lý sản phẩm</span>
+						</a>
+							<ul class="submenu-angle" aria-expanded="true">
+
+								<li><a title="Quản lý sản phẩm" th:href="@{/admin/}"> <span
+										class="mini-sub-pro">Quản lý sản phẩm</span>
+								</a></li>
+								<li><a title="Quản lý khách hàng"
+									th:href="@{/admin/listCustomer/}"><span
+										class="mini-sub-pro">Quản lý khách hàng</span></a></li>
+								<li><a title="Quản lý loại sản phẩm"
+									th:href="@{/admin/listProductType/}"><span
+										class="mini-sub-pro">Quản lý loại sản phẩm</span></a></li>
+
+								<li><a title="Quản lý đơn hàng"
+									th:href="@{/admin/listOrder/}"><span class="mini-sub-pro">Quản
+											lý đơn hàng</span></a></li>
+
+							</ul></li>
+						<li id="removable"><a class="has-arrow" href="#"
+							aria-expanded="false"> <i
+								class="icon admin-new-file icon-wrap"></i> <i
+								class="icon nalika-pie-chart icon-wrap"> </i> <span
+								class="mini-click-non">Pages</span>
+						</a>
+							<ul class="submenu-angle" aria-expanded="false">
+
+								<li><a title="Đăng nhập" href=""><span
+										class="mini-sub-pro">Đăng nhập</span></a></li>
+								<li><a title="Đăng ký" href=""><span
+										class="mini-sub-pro">Đăng ký</span></a></li>
+								<li><a title="Lock" href=""> <span class="mini-sub-pro">Lock</span>
+								</a></li>
+								<li><a title="Password Recovery" href=""> <span
+										class="mini-sub-pro">Password Recovery</span>
+								</a></li>
+							</ul></li>
+					</ul>
+				</nav>
+			</div>
+		</nav>
+	</div>
+
+	<div class="all-content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="logo-pro">
+						<a th:href="@{admin}"><img class="main-logo"
+							th:src="@{/resource/admin/img/logo/logo.png}" alt="" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="container body-content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="logo-pro">
+						<a href="admin"> <img class="main-logo"
+							th:src="@{/resource/admin/img/logo/logo.png}" alt="" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<div class="header-advance-area">
+			<div class="header-top-area">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="header-top-wraper">
+								<div class="row">
+									<div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+										<div class="menu-switcher-pro">
+											<button type="button" id="sidebarCollapse"
+												class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+												<i class="icon nalika-menu-task"></i>
+											</button>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+										<div class="header-top-menu tabl-d-n hd-search-rp">
+											<div class="breadcome-heading">
+												<form role="search" class="">
+													<input type="text" placeholder="Search..."
+														class="form-control"> <a href=""> <i
+														class="fa fa-search"></i>
+													</a>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<div class="header-right-info">
+											<ul class="nav navbar-nav mai-top-nav header-right-menu">
+												<li class="nav-item dropdown"><a href="#"
+													data-toggle="dropdown" role="button" aria-expanded="false"
+													class="nav-link dropdown-toggle"> <i
+														class="icon nalika-mail" aria-hidden="true"> </i> <span
+														class="indicator-ms"> </span>
+												</a>
+													<div role="menu"
+														class="author-message-top dropdown-menu animated zoomIn">
+														<div class="message-single-top">
+															<h1>Tin nhắn</h1>
+														</div>
+														<ul class="message-menu">
+															<li><a href="#">
+																	<div class="message-img">
+																		<img
+																			src="<%=request.getContextPath()%>/Content/img/contact/1.jpg"
+																			alt="">
+																	</div>
+																	<div class="message-content">
+																		<span class="message-date">16 tháng 9</span>
+																		<h2>Vân Anh</h2>
+																		<p>Mau chóng hoàn thành đồ án nhé.</p>
+																	</div>
+															</a></li>
+															<li><a href="#">
+																	<div class="message-img">
+																		<img
+																			src="<%=request.getContextPath()%>/Content/img/contact/4.jpg"
+																			alt="">
+																	</div>
+																	<div class="message-content">
+																		<span class="message-date">16 tháng 9</span>
+																		<h2>anh Hoàng</h2>
+																		<p>Hoàn thành sớm công việc giúp anh.</p>
+																	</div>
+															</a></li>
+															<li><a href="#">
+																	<div class="message-img">
+																		<img
+																			src="<%=request.getContextPath()%>/Content/img/contact/3.jpg"
+																			alt="">
+																	</div>
+																	<div class="message-content">
+																		<span class="message-date">16 tháng 9</span>
+																		<h2>Giám đốc</h2>
+																		<p>Em lên văn phòng gặp anh xíu nhé.</p>
+																	</div>
+															</a></li>
+															<li><a href="#">
+																	<div class="message-img">
+																		<img
+																			src="<%=request.getContextPath()%>/Content/img/contact/2.jpg"
+																			alt="">
+																	</div>
+																	<div class="message-content">
+																		<span class="message-date">16 tháng 9</span>
+																		<h2>Quyên</h2>
+																		<p>Họp trưởng phòng lúc 10h.</p>
+																	</div>
+															</a></li>
+														</ul>
+														<div class="message-view">
+															<a href="#">Hiển thị tất cả tin nhắn</a>
+														</div>
+													</div></li>
+												<li class="nav-item"><a href="#" data-toggle="dropdown"
+													role="button" aria-expanded="false"
+													class="nav-link dropdown-toggle"> <i
+														class="icon nalika-alarm" aria-hidden="true"> </i> <span
+														class="indicator-nt"> </span>
+												</a>
+													<div role="menu"
+														class="notification-author dropdown-menu animated zoomIn">
+														<div class="notification-single-top">
+															<h1>Thông báo</h1>
+														</div>
+														<ul class="notification-menu">
+															<li><a href="#">
+																	<div class="notification-icon">
+																		<i class="icon nalika-tick" aria-hidden="true"></i>
+																	</div>
+																	<div class="notification-content">
+																		<span class="notification-date">16 tháng 9</span>
+																		<h2>Trang Phạm</h2>
+																		<p>Trang Phạm vừa bình luận sản phẩm.</p>
+																	</div>
+															</a></li>
+															<li><a href="#">
+																	<div class="notification-icon">
+																		<i class="icon nalika-cloud" aria-hidden="true"></i>
+																	</div>
+																	<div class="notification-content">
+																		<span class="notification-date">16 tháng 9</span>
+																		<h2>Hoài Tú</h2>
+																		<p>Hoài Tú vừa gửi một tin nhắn.</p>
+																	</div>
+															</a></li>
+															<li><a href="#">
+																	<div class="notification-icon">
+																		<i class="icon nalika-folder" aria-hidden="true">
+																		</i>
+																	</div>
+																	<div class="notification-content">
+																		<span class="notification-date">15 tháng 10</span>
+																		<h2>Davi</h2>
+																		<p>Davi vừa gửi một tin nhắn.</p>
+																	</div>
+															</a></li>
+															<li><a href="#">
+																	<div class="notification-icon">
+																		<i class="icon nalika-bar-chart" aria-hidden="true">
+																		</i>
+																	</div>
+																	<div class="notification-content">
+																		<span class="notification-date">14 tháng 10</span>
+																		<h2>Hoài Tú</h2>
+																		<p>Hoài Tú vừa gửi một tin nhắn.</p>
+																	</div>
+															</a></li>
+														</ul>
+														<div class="notification-view">
+															<a href="#">Hiển thị tất cả</a>
+														</div>
+													</div></li>
+												<li class="nav-item">
+													<ul role="menu"
+														class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+														<li><a href=""> <span
+																class="icon nalika-home author-log-ic"> </span> Đăng kí
+														</a></li>
+														<li><a href="#"> <span
+																class="icon nalika-user author-log-ic"></span> Hồ sơ
+														</a></li>
+
+														<li><a href="#"> <span
+																class="icon nalika-settings author-log-ic"> </span> Cài
+																đặt
+														</a></li>
+														<li><a
+															href="<%=request.getContextPath()%>/j_spring_security_logout">
+																<span class="icon nalika-unlocked author-log-ic">
+															</span> Đăng xuất
+														</a></li>
+													</ul> <a href="#" data-toggle="dropdown" role="button"
+													aria-expanded="false" class="nav-link dropdown-toggle">
+														<i class="icon nalika-user"></i> <span class="admin-name">
+													</span> <i class="icon nalika-down-arrow nalika-angle-dw"></i>
+												</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- Mobile Menu end -->
+			<div class=" all-content-wrapper breadcome-area">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="breadcome-list">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+										<div class="breadcomb-wp">
+											<div class="breadcomb-icon">
+												<i class="icon nalika-home"></i>
+											</div>
+											<div class="breadcomb-ctn">
+												<h2>BOOK STORE</h2>
+												<p>
+													Chào mừng <span class="bread-ntd"><span
+														th:utext="${#request.userPrincipal.name}"></span></span>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+</body>
+</html>

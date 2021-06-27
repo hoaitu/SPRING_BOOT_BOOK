@@ -1,0 +1,89 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- Dashboard V.1 | Nalika - Material Admin Template -->
+<title>WRITER Admin</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+	<!-- NƠI GẮN LINK VÀO -->
+	<div th:insert="~{admin/linkAdm :: links_admin}"></div>
+
+
+
+
+	<div th:insert="~{admin/header :: header_admin}"></div>
+
+
+
+	<!-- Mobile Menu start -->
+
+	<div class="all-content-wrapper product-status mg-b-30">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="product-status-wrap">
+					<h4>Products List</h4>
+
+					<div class="add-product">
+						<a th:href="@{/admin/productAdd/}">Thêm sản phẩm </a>
+					</div>
+					<table>
+						<tbody>
+
+							<tr>
+								<th>Hình ảnh</th>
+								<th>Tên</th>
+								<th>Tác giả</th>
+								<th>Giá giảm</th>
+								<th>Ngày xuất bản</th>
+								<th>Loại</th>
+								<th>Thao tác</th>
+							</tr>
+							<div th:each="book : ${listbook}">
+								<tr>
+									<td><a th:href="@{/single_product}"
+										class="single-banner-image-wrapper"> <img alt=""
+											th:src="@{${book.hinhAnh}}" />
+									</a></td>
+									<td><p th:text="${book.tenSach}"></p></td>
+									<td><p th:text="${book.tenTacGia }"></p></td>
+									<td><p th:text="${book.gia }+'.000 VNĐ'"></p></td>
+									<td><p th:text="${book.ngayXuatBan }"></p></td>
+									<td>
+										<div th:switch="${book.theloaisach }"
+											th:each="category : ${listcategory}">
+											<p th:case="${category.maTheLoai}"
+												th:text="${category.tenTheLoai}"></p>
+
+										</div>
+
+									</td>
+									<td><a th:href="@{/admin/productEdit/}+${book.maSach}"><button
+												data-toggle="tooltip" title="Edit" class="pd-setting-ed">
+												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+											</button> </a> <a onclick="return confirm('Bạn có chắc muốn xóa')"
+										th:href="@{/admin/productDelete/}+${book.maSach}"><button
+												data-toggle="tooltip" title="Trash" class="pd-setting-ed">
+												<i class="fa fa-trash-o" aria-hidden="true"></i>
+											</button> </a></td>
+								</tr>
+							</div>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div th:insert="~{admin/footer :: footer_admin}"></div>
+</body>
+
+</html>
