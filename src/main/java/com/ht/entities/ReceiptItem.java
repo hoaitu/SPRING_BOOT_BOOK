@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity()
-@Table(name = "receiptitem", catalog = "book_dacnpm")
+@Table(name = "receiptitem", catalog = "n5x3Ax22Vm")
 public class ReceiptItem implements Serializable {
 
 	@Id
