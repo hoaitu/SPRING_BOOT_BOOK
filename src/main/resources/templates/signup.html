@@ -27,10 +27,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="breadcrumbs">
-						<h2>ĐĂNG KÝ</h2>
+						<h2>ĐĂNG KÝ</h2>
 						<ul class="breadcrumbs-list">
-							<li><a title="Return to Home" href="/">Trang chủ</a></li>
-							<li>Đăng ký</li>
+							<li><a title="Return to Home" href="/">Trang chủ</a></li>
+							<li>Đăng ký</li>
 						</ul>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 						style="width: 340px; padding-bottom: 30px; padding-top: 30px; margin: auto;
 						background-image: url('https://static.boredpanda.com/blog/wp-content/uploads/2018/03/BNFZPI6A7Vi-png__880.jpg');">
 
-						<h2 class="heading-title" style=" font-weight: bold">Tạo tài khoản mới</h2>
+						<h2 class="heading-title" style=" font-weight: bold">TaÌ£o taÌi khoaÌn mÆ¡Ìi</h2>
 
 
 
@@ -70,7 +70,7 @@
 							<!-- *Username: -->
 							<input style="outline: none; width: 100%;" id="cname"
 								type="email" name="userName" size="40"
-								placeholder="Tên người dùng" th:field="*{username}" required>
+								placeholder="Tên người dùng" th:field="*{username}" required>
 						</p>
 						<!-- TU: Where show log mess if User extis in DB; Ajax under same Page  -->
 
@@ -87,26 +87,26 @@
 						<p class="form-row">
 							<!-- *Password: -->
 							<input style="outline: none;" type="password" name="password"
-								placeholder="Mật khẩu" id="txtPassword" th:field="*{password}"
+								placeholder="Mật khẩu" id="txtPassword" th:field="*{password}"
 								pattern=".{6,}" title="8 characters minimum" required />
 						</p>
 						<p class="form-row">
 							<!-- *RePassword:  -->
 							<input style="outline: none;" type="password" name="cfpassword"
-								placeholder="Xác nhận" id="txtConfirmPassword" required />
+								placeholder="Xác nhận" id="txtConfirmPassword" required />
 						</p>
 						<div style="text-align: center;">
 							<div style="display: inline-block;">
-								Giới tính: <select name="gender" class="form-control">
+								GiÆ¡Ìi tiÌnh: <select name="gender" class="form-control">
 									<option value="Nam">Nam</option>
-									<option value="Nữ">Nu</option>
+									<option value="Nữ¯">Nu</option>
 									<option value="Khác">Khac</option>
 								</select>
 							</div>
 							<!-- kiem tra co dung dinh dang dd/mm/yyyy min:1950-01-01, max:2030-12-31 (tran) -->
 							<div style="display: inline-block;">
 								<p class="form-row">
-									Ngày sinh: <input name="dateOfBirth" type="datetime"
+									NgaÌy sinh: <input name="dateOfBirth" type="datetime"
 										style="width: 100%; height: 35px" class="form-control"
 										placeholder="DD/MM/YYYY" value="" min="1997-01-01"
 										max="2030-12-31" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}\b"
@@ -117,7 +117,7 @@
 						<p class="form-row">
 							<!-- Phone: -->
 							<input th:field="*{phone}" Class="form-control"
-								placeholder="Số điện thoại"
+								placeholder="SÃ´Ì ÄiÃªÌ£n thoaÌ£i"
 								pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b"
 								required />
 						</p>
@@ -125,7 +125,7 @@
 						<p class="form-row">
 							<!-- Address: -->
 							<input th:field="*{address}" Class="form-control"
-								placeholder="Địa chỉ" required />
+								placeholder="ÄiÌ£a chiÌ" required />
 						<div id="error-address" class="error"></div>
 						<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
 							required></p>
@@ -136,13 +136,13 @@
 						<div class="submit" style="text-align: center;">
 							<button name="submitcreate" id="submitcreate" type="submit"
 								class="btn-default" value="Submit" onclick="return Validate()" >
-							<span> <i class="fa fa-user left"></i> Lưu
+							<span> <i class="fa fa-user left"></i> LÆ°u
 							</span>
 							</button>
 
 							<button name="submitcreate" id="submitcreate" type="submit"
 								class="btn-default-second">
-								<span> <i class="fa fa-user left"></i> Hủy
+								<span> <i class="fa fa-user left"></i> Há»§y
 								</span>
 							</button>
 
@@ -155,7 +155,7 @@
 	
 
 
-	<!-- 	/**Chức năng nhập lại pass  + nhập đúng form email dùng Java Script*/ -->
+	<!-- 	/**Chá»©c nÄng nháº­p láº¡i pass  + nháº­p ÄÃºng form email dÃ¹ng Java Script*/ -->
 	<!-- TU: Funtion : input RePassWord + Form when write Email is right Using Java Script -->
 
 	<script type="text/javascript">
@@ -218,12 +218,12 @@
 																		$(
 																				"#error-name")
 																				.text(
-																						"Tên người dùng này đã tồn tại, xin thử lại tên khác");
+																						"TÃªn ngÆ°á»i dÃ¹ng nÃ y ÄÃ£ tá»n táº¡i, xin thá»­ láº¡i tÃªn khÃ¡c");
 																	} else if (value == '') {
 																		$(
 																				"#error-name")
 																				.text(
-																						"Vui lòng nhập tên người dùng");
+																						"Vui lÃ²ng nháº­p tÃªn ngÆ°á»i dÃ¹ng");
 																	} else {
 																		$(
 																				"#error-name")
@@ -250,7 +250,7 @@
 	<!-- Footer Area Start -->
 
 	<!-- Footer Area Start -->
-	<!-- NÆ I Gáº®N FOOTER -->
+	<!-- NÃ I GÃ¡ÂºÂ®N FOOTER -->
 	<div th:insert="~{footer :: footer_in}"></div>
 </body>
 </html>
